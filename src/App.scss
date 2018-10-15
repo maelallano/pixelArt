@@ -1,0 +1,372 @@
+$gridSize: 600px;
+$interfaceSize: 300px;
+$yellow: #FFDF00;
+
+* {
+  margin: 0px;
+  padding: 0;
+  font-family: 'Inconsolata', monospace;
+}
+
+#root {
+  background: lightgrey;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: $gridSize + $interfaceSize + 40px;
+}
+
+.interface {
+  width: $interfaceSize;
+  background: lightblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &__title {
+    margin: 20px 0px;
+  }
+  
+  .traitL {
+    height: 1px;
+    width: 80%;
+    background: black;
+    margin-bottom: 24px;
+  }
+  
+  .traitS {
+    height: 1px;
+    width: 40%;
+    background: black;
+  }
+  
+  &__btnsContainer {
+    //border: 1px solid red;
+    height: 82%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__cellSize {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    
+    &__title {
+      text-align: center;
+    }
+    
+    &__containerBtns {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+  
+  .cellSizeBtn {
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+  
+  .cellSizeBtn:hover {
+    cursor: pointer;
+  }
+  
+  &__cellSize__small {
+    background: yellow;
+  }
+  &__cellSize__medium {
+    background: orange;
+  }
+  &__cellSize__large {
+    background: red;
+  }
+  
+  .toggleGridContainer {
+    display: flex;
+    width: 84%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  &__erasersContainer {
+    width: 90%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__btnsContainer {
+      width: 100%;
+      height: 66%;
+      display: flex;
+      justify-content: space-around;
+    }
+    &__btnsContainer div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 40%;
+    }
+    .traitUp {
+      height: 60%;
+      margin-top: 10px;
+      width: 1px;
+      background: black;
+    }
+    &__eraseAllContainer {
+      &__btn {
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px !important;
+        height: 40px !important;
+        
+        img {
+          width: 34px;
+          height: 34px;
+        }
+      }
+      &__btn:hover {
+        cursor: pointer;
+      }
+    }
+    &__eraserContainer {
+      label {
+        width: 36px;
+        height: 36px;
+      }
+      &__input {
+        margin-bottom: 10px;
+        display:none;
+      }
+      &__input + div {
+        cursor: pointer;
+      }
+      &__input:checked + div {
+        border: 1px solid black;
+        border-radius: 3px;
+      }
+      div {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 34px;
+        }
+      }
+    }
+  }
+  
+  &__colorsContainer {
+    width: 90%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      cursor: pointer;
+    }
+    &__inputContainer {
+      width: 100%;
+      height: 66%;
+      display: flex;
+      justify-content: space-around;
+    }
+    &__inputContainer div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 40%;
+    }
+    .traitUp {
+      height: 60%;
+      margin-top: 10px;
+      width: 1px;
+      background: black;;
+    }
+  }
+  &__utilsBtnsContainer {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    &__saveBtn {
+      border-radius: 3px;
+      padding: 5px 10px;
+      background: white;
+      color: green;
+      border: 2px solid green;
+      transition: ease-in-out .2s
+    }
+    &__saveBtn:hover {
+      cursor: pointer;
+      background: green;
+      color: white;
+      border-color: white;
+    }
+    
+    &__exitBtn {
+      border-radius: 3px;
+      padding: 5px 10px;
+      background: white;
+      color: red;
+      border: 2px solid red;
+      transition: ease-in-out .2s;
+    }
+    &__exitBtn:hover {
+      cursor: pointer;
+      background: red;
+      color: white;
+      border-color: white;
+    }
+  }
+  &__pasteDrawingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    &__compContainer {
+      display: flex;
+      &__btn {
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        border-radius: 0px 3px 3px 0px;
+        padding: 0px 6px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.grid {
+  width: $gridSize;
+  height: $gridSize;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+}
+
+.cell {
+  border: 1px solid;
+}
+
+// checkbox switch
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.menu {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+  &__title {
+    margin-top: 10px;
+  }
+  &__boardsContainer {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: space-around;
+    align-items: center;
+    &__board {
+      background: $yellow;
+      height: 220px;
+      width: 140px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: ease-in-out .1s;
+      border: 4px solid black;
+    }
+    &__board:hover {
+      cursor: pointer;
+      background: black;
+      color: $yellow;
+      border-color: $yellow;
+    }
+  }
+}
